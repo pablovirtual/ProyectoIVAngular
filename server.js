@@ -24,6 +24,10 @@ app.get('/faq', (req, res) => {
   res.sendFile('faq.html', { root: path.join(__dirname, 'dist/angular-laravel-app') });
 });
 
+app.get('/quienes-somos', (req, res) => {
+  res.sendFile('quienes-somos.html', { root: path.join(__dirname, 'dist/angular-laravel-app') });
+});
+
 // Iniciar el servidor
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, '0.0.0.0', () => {

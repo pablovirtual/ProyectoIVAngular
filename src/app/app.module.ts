@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { FaqComponent } from './components/faq/faq.component';
+import { QuienesSomosComponent } from './components/quienes-somos/quienes-somos.component';
 
 import { ApiService } from './services/api.service';
 import { AuthService } from './services/auth.service';
@@ -17,7 +18,8 @@ import { AuthService } from './services/auth.service';
     AppComponent,
     HomeComponent,
     LoginComponent,
-    FaqComponent
+    FaqComponent,
+    QuienesSomosComponent
   ],
   imports: [
     BrowserModule,

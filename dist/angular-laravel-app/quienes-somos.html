@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiénes Somos - Angular Laravel App</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <!-- Navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="/">Angular Laravel App</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Inicio</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/quienes-somos">Quiénes Somos <span class="sr-only">(actual)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/faq">FAQ</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido Principal -->
+    <div class="content container quienes-somos-container">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="mb-4">Quiénes Somos</h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Misión y Visión -->
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h2 class="h4 mb-0">Nuestra Visión</h2>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Ser la empresa líder en soluciones tecnológicas innovadoras que transformen la manera en que las personas interactúan con la tecnología, contribuyendo al desarrollo sostenible de la sociedad.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h2 class="h4 mb-0">Nuestra Misión</h2>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Proporcionar soluciones tecnológicas de alta calidad que satisfagan las necesidades de nuestros clientes, promoviendo la innovación, la excelencia y el desarrollo profesional de nuestro equipo.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Políticas de Calidad -->
+            <div class="col-12">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h2 class="h4 mb-0">Políticas de Calidad</h2>
+                    </div>
+                    <div class="card-body">
+                        <ul class="policy-list">
+                            <li>Compromiso con la calidad en todos nuestros productos y servicios</li>
+                            <li>Mejora continua de procesos y tecnologías</li>
+                            <li>Responsabilidad social y ambiental en todas nuestras operaciones</li>
+                            <li>Transparencia y ética en nuestras relaciones comerciales</li>
+                            <li>Fomento de la innovación y creatividad</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ubicación Física -->
+            <div class="col-md-6">
+                <div class="card location-card mb-4">
+                    <div class="card-header">
+                        <h2 class="h4 mb-0">Ubicación Física</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="location-info">
+                            <p><i class="fas fa-map-marker-alt"></i> Calle Principal 123, Edificio Tecnológico, Piso 5</p>
+                            <p><i class="fas fa-city"></i> Ciudad de México, México</p>
+                            <p><i class="fas fa-phone"></i> +52 55 1234 5678</p>
+                            <p><i class="fas fa-envelope"></i> contacto@empresa.com</p>
+                        </div>
+                        
+                        <!-- Mapa placeholder -->
+                        <div class="map-container bg-light d-flex justify-content-center align-items-center">
+                            <p class="text-muted">Mapa de ubicación</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Imagen o información adicional -->
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h2 class="h4 mb-0">Nuestras Instalaciones</h2>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text mb-4">
+                            Contamos con instalaciones modernas diseñadas para fomentar la creatividad y 
+                            la colaboración. Nuestras oficinas están equipadas con la última tecnología
+                            para garantizar que nuestro equipo pueda trabajar de manera eficiente y cómoda.
+                        </p>
+                        <div class="bg-light d-flex justify-content-center align-items-center" style="height: 200px;">
+                            <p class="text-muted">Imagen de instalaciones</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pie de página -->
+    <footer class="footer bg-light">
+        <div class="container text-center">
+            <span class="text-muted">© 2025 Angular Laravel App. Todos los derechos reservados.</span>
+        </div>
+    </footer>
+
+    <!-- Scripts necesarios para Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
