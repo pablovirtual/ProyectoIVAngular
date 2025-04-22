@@ -5,34 +5,84 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.2/dist/lux/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      padding: 50px;
+      padding: 0;
     }
     .header {
       margin-bottom: 40px;
       text-align: center;
+      padding-top: 30px;
     }
     .card {
       margin-bottom: 20px;
+      transition: transform 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    .main-content {
+      padding: 30px;
+    }
+    .nav-link {
+      font-weight: 500;
+    }
+    .nav-link.active {
+      font-weight: 700;
+    }
+    .footer {
+      margin-top: 50px;
+      padding: 20px 0;
+      background-color: #f8f9fa;
+      text-align: center;
     }
   </style>
 </head>
 <body>
-  <div class="container">
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+      <a class="navbar-brand" href="/">Angular Laravel App</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="/home"><i class="fas fa-home"></i> Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/faq"><i class="fas fa-question-circle"></i> Preguntas Frecuentes</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="/login"><i class="fas fa-sign-in-alt"></i> Iniciar Sesión</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="container main-content">
     <div class="header">
       <h1>Angular Laravel App</h1>
-      <p class="lead">Welcome to our application built with Angular and styled with Bootswatch LUX theme</p>
+      <p class="lead">Bienvenido a nuestra aplicación construida con Angular y estilizada con el tema Bootswatch LUX</p>
     </div>
     
+    <!-- Component Cards -->
     <div class="row">
       <div class="col-md-4">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Home Component</h5>
-            <p class="card-text">The landing page of the application showing an overview of the content and features.</p>
+            <h5 class="card-title"><i class="fas fa-home text-primary"></i> Componente Inicio</h5>
+            <p class="card-text">La página principal de la aplicación que muestra una visión general del contenido y funcionalidades.</p>
+            <a href="/home" class="btn btn-outline-primary">Ir a Inicio</a>
           </div>
         </div>
       </div>
@@ -40,8 +90,9 @@
       <div class="col-md-4">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Login Component</h5>
-            <p class="card-text">User authentication interface with form validation and secure login functionality.</p>
+            <h5 class="card-title"><i class="fas fa-sign-in-alt text-primary"></i> Componente Login</h5>
+            <p class="card-text">Interfaz de autenticación de usuario con validación de formularios y funcionalidad de inicio de sesión segura.</p>
+            <a href="/login" class="btn btn-outline-primary">Ir a Login</a>
           </div>
         </div>
       </div>
@@ -49,18 +100,33 @@
       <div class="col-md-4">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">FAQ Component</h5>
-            <p class="card-text">Frequently asked questions with expandable/collapsible sections for better readability.</p>
+            <h5 class="card-title"><i class="fas fa-question-circle text-primary"></i> Componente FAQ</h5>
+            <p class="card-text">Preguntas frecuentes con secciones expandibles/contraíbles para una mejor legibilidad.</p>
+            <a href="/faq" class="btn btn-outline-primary">Ir a FAQ</a>
           </div>
         </div>
       </div>
     </div>
     
-    <div class="mt-5">
-      <p>This is a placeholder page. The actual Angular application will be built and displayed here.</p>
-      <p><small>Server is running correctly! ✓</small></p>
+    <!-- Additional Info Section -->
+    <div class="row mt-5">
+      <div class="col-md-8 offset-md-2">
+        <div class="alert alert-info">
+          <h4 class="alert-heading">Información sobre esta página</h4>
+          <p>Esta es una página temporal. La aplicación Angular real se construirá y mostrará aquí.</p>
+          <hr>
+          <p class="mb-0"><i class="fas fa-check-circle"></i> El servidor está funcionando correctamente.</p>
+        </div>
+      </div>
     </div>
   </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2023 Angular Laravel App. Todos los derechos reservados.</p>
+    </div>
+  </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Preguntas Frecuentes - Angular Laravel App</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.2/dist/lux/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .header {
+      margin-bottom: 40px;
+      text-align: center;
+      padding-top: 30px;
+    }
+    .main-content {
+      padding: 30px;
+    }
+    .nav-link {
+      font-weight: 500;
+    }
+    .nav-link.active {
+      font-weight: 700;
+    }
+    .footer {
+      margin-top: 50px;
+      padding: 20px 0;
+      background-color: #f8f9fa;
+      text-align: center;
+    }
+    .faq-section {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .accordion-button:not(.collapsed) {
+      background-color: #e7f1ff;
+      color: #0c63e4;
+    }
+    .faq-icon {
+      font-size: 2rem;
+      color: #007bff;
+      margin-bottom: 20px;
+    }
+    .faq-category {
+      margin-top: 30px;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #e9ecef;
+    }
+    .contact-info {
+      background-color: #f8f9fa;
+      padding: 30px;
+      border-radius: 5px;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+      <a class="navbar-brand" href="/">Angular Laravel App</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/home"><i class="fas fa-home"></i> Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/faq"><i class="fas fa-question-circle"></i> Preguntas Frecuentes</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="/login"><i class="fas fa-sign-in-alt"></i> Iniciar Sesión</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- FAQ Content -->
+  <div class="container main-content">
+    <div class="header">
+      <i class="fas fa-question-circle faq-icon"></i>
+      <h1>Preguntas Frecuentes</h1>
+      <p class="lead">Encuentra respuestas a las preguntas más comunes sobre nuestra aplicación</p>
+    </div>
+    
+    <div class="faq-section">
+      <!-- General Category -->
+      <h3 class="faq-category"><i class="fas fa-info-circle"></i> General</h3>
+      
+      <div class="accordion" id="accordionGeneral">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              ¿Qué es Angular Laravel App?
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionGeneral">
+            <div class="accordion-body">
+              <strong>Angular Laravel App</strong> es una aplicación web moderna que combina Angular en el frontend y Laravel en el backend. Ofrece una experiencia de usuario fluida y dinámica con una interfaz atractiva utilizando Bootswatch LUX theme.
+            </div>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              ¿Necesito crear una cuenta para usar la aplicación?
+            </button>
+          </h2>
+          <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionGeneral">
+            <div class="accordion-body">
+              Sí, para acceder a todas las funcionalidades de la aplicación, necesitarás crear una cuenta. El proceso de registro es rápido y sencillo, solo necesitamos tu nombre, correo electrónico y contraseña.
+            </div>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingThree">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              ¿La aplicación es gratuita?
+            </button>
+          </h2>
+          <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionGeneral">
+            <div class="accordion-body">
+              Ofrecemos una versión gratuita con funcionalidades básicas. También tenemos planes premium que desbloquean características avanzadas para usuarios que necesitan más opciones. Puedes consultar nuestros diferentes planes en la sección de precios.
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Technical Category -->
+      <h3 class="faq-category"><i class="fas fa-cogs"></i> Técnico</h3>
+      
+      <div class="accordion" id="accordionTechnical">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingFour">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+              ¿Qué navegadores son compatibles con la aplicación?
+            </button>
+          </h2>
+          <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionTechnical">
+            <div class="accordion-body">
+              Nuestra aplicación es compatible con los navegadores modernos como Chrome, Firefox, Safari y Edge en sus versiones más recientes. Recomendamos mantener tu navegador actualizado para la mejor experiencia.
+            </div>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingFive">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+              ¿La aplicación funciona en dispositivos móviles?
+            </button>
+          </h2>
+          <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionTechnical">
+            <div class="accordion-body">
+              Sí, nuestra aplicación es completamente responsiva y se adapta a cualquier tamaño de pantalla. Puedes utilizarla desde tu smartphone, tablet o computadora sin problemas.
+            </div>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingSix">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+              ¿Cómo puedo reportar un error en la aplicación?
+            </button>
+          </h2>
+          <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionTechnical">
+            <div class="accordion-body">
+              Si encuentras algún error, puedes reportarlo a través de nuestro formulario de contacto o enviando un correo a soporte@angularlaravelapp.com. Tratamos de resolver todos los problemas lo más rápido posible.
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Account Category -->
+      <h3 class="faq-category"><i class="fas fa-user"></i> Cuenta</h3>
+      
+      <div class="accordion" id="accordionAccount">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingSeven">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+              ¿Cómo puedo cambiar mi contraseña?
+            </button>
+          </h2>
+          <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionAccount">
+            <div class="accordion-body">
+              Para cambiar tu contraseña, inicia sesión en tu cuenta, ve a "Configuración" y selecciona la opción "Cambiar contraseña". Deberás ingresar tu contraseña actual y la nueva contraseña que deseas establecer.
+            </div>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingEight">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+              ¿Puedo eliminar mi cuenta?
+            </button>
+          </h2>
+          <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionAccount">
+            <div class="accordion-body">
+              Sí, puedes eliminar tu cuenta en cualquier momento. Ve a "Configuración", luego a "Cuenta" y selecciona "Eliminar cuenta". Ten en cuenta que esta acción es irreversible y perderás todos tus datos y contenido.
+            </div>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingNine">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+              ¿Qué hago si olvidé mi contraseña?
+            </button>
+          </h2>
+          <div id="collapseNine" class="accordion-collapse collapse" aria-labelledby="headingNine" data-bs-parent="#accordionAccount">
+            <div class="accordion-body">
+              Si olvidaste tu contraseña, haz clic en el enlace "¿Olvidaste tu contraseña?" en la página de inicio de sesión. Ingresa el correo electrónico asociado a tu cuenta y te enviaremos un enlace para restablecer tu contraseña.
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Contact Information -->
+      <div class="contact-info text-center">
+        <h4>¿No encuentras la respuesta que buscas?</h4>
+        <p>Contáctanos directamente y estaremos encantados de ayudarte.</p>
+        <div class="d-flex justify-content-center mt-3">
+          <a href="#" class="btn btn-outline-primary me-2"><i class="fas fa-envelope"></i> Contacto</a>
+          <a href="#" class="btn btn-outline-primary"><i class="fas fa-headset"></i> Soporte</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2023 Angular Laravel App. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

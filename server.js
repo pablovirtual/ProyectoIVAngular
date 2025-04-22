@@ -1,17 +1,31 @@
 const express = require('express');
 const path = require('path');
+
+// Crear la aplicación Express
 const app = express();
 
-// Serve static files
-app.use(express.static(path.join(__dirname, 'dist/angular-laravel-app')));
+// Configurar el directorio de archivos estáticos
+app.use(express.static('dist/angular-laravel-app'));
 
-// For all GET requests, send back index.html
+// Manejar las rutas
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist/angular-laravel-app/index.html'));
+  res.sendFile('index.html', { root: path.join(__dirname, 'dist/angular-laravel-app') });
 });
 
-// Start the app by listening on port 5000
+app.get('/home', (req, res) => {
+  res.sendFile('home.html', { root: path.join(__dirname, 'dist/angular-laravel-app') });
+});
+
+app.get('/login', (req, res) => {
+  res.sendFile('login.html', { root: path.join(__dirname, 'dist/angular-laravel-app') });
+});
+
+app.get('/faq', (req, res) => {
+  res.sendFile('faq.html', { root: path.join(__dirname, 'dist/angular-laravel-app') });
+});
+
+// Iniciar el servidor
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, '0.0.0.0', () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`Servidor ejecutándose en puerto ${PORT}`);
 });
