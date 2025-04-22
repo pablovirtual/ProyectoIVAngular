@@ -30,6 +30,15 @@ export class ApiService {
       catchError(this.handleError<Faq[]>('getFaqs', []))
     );
   }
+  
+  /**
+   * Get Quienes Somos content from the API
+   */
+  getQuienesSomosContent(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/quienes-somos`).pipe(
+      catchError(this.handleError<any>('getQuienesSomosContent', {}))
+    );
+  }
 
   /**
    * Handle Http operation that failed.

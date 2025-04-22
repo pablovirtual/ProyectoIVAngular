@@ -1,0 +1,100 @@
+<div class="container quienes-somos-container">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="mb-4">Quiénes Somos</h1>
+    </div>
+  </div>
+
+  <!-- Loader -->
+  <div *ngIf="loading" class="loading-spinner">
+    <div class="spinner-border text-primary" role="status">
+      <span class="sr-only">Cargando...</span>
+    </div>
+  </div>
+
+  <!-- Error Message -->
+  <div *ngIf="error" class="error-message">
+    {{ error }}
+  </div>
+
+  <!-- Main Content -->
+  <div *ngIf="!loading && !error" class="row">
+    <!-- Misión y Visión -->
+    <div class="col-md-6">
+      <div class="card mb-4">
+        <div class="card-header">
+          <h2 class="h4 mb-0">Nuestra Visión</h2>
+        </div>
+        <div class="card-body">
+          <p class="card-text">{{ content.vision }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card mb-4">
+        <div class="card-header">
+          <h2 class="h4 mb-0">Nuestra Misión</h2>
+        </div>
+        <div class="card-body">
+          <p class="card-text">{{ content.mision }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Políticas de Calidad -->
+    <div class="col-12">
+      <div class="card mb-4">
+        <div class="card-header">
+          <h2 class="h4 mb-0">Políticas de Calidad</h2>
+        </div>
+        <div class="card-body">
+          <ul class="policy-list">
+            <li *ngFor="let politica of content.politicas">{{ politica }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ubicación Física -->
+    <div class="col-md-6">
+      <div class="card location-card mb-4">
+        <div class="card-header">
+          <h2 class="h4 mb-0">Ubicación Física</h2>
+        </div>
+        <div class="card-body">
+          <div class="location-info">
+            <p><i class="fa fa-map-marker"></i> {{ content.ubicacion.direccion }}</p>
+            <p><i class="fa fa-city"></i> {{ content.ubicacion.ciudad }}, {{ content.ubicacion.pais }}</p>
+            <p><i class="fa fa-phone"></i> {{ content.ubicacion.telefono }}</p>
+            <p><i class="fa fa-envelope"></i> {{ content.ubicacion.email }}</p>
+          </div>
+          
+          <!-- Aquí iría un mapa pero para simplificar usamos un div placeholder -->
+          <div class="map-container bg-light d-flex justify-content-center align-items-center">
+            <p class="text-muted">Mapa de ubicación</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Imagen o información adicional -->
+    <div class="col-md-6">
+      <div class="card mb-4">
+        <div class="card-header">
+          <h2 class="h4 mb-0">Nuestras Instalaciones</h2>
+        </div>
+        <div class="card-body">
+          <p class="card-text mb-4">
+            Contamos con instalaciones modernas diseñadas para fomentar la creatividad y 
+            la colaboración. Nuestras oficinas están equipadas con la última tecnología
+            para garantizar que nuestro equipo pueda trabajar de manera eficiente y cómoda.
+          </p>
+          <div class="bg-light d-flex justify-content-center align-items-center" style="height: 200px;">
+            <p class="text-muted">Imagen de instalaciones</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

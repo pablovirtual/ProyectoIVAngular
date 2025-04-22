@@ -1,0 +1,91 @@
+.quienes-somos-container {
+  padding: 2rem 0;
+}
+
+.section-title {
+  color: #343a40;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  border-bottom: 2px solid #f8f9fa;
+  padding-bottom: 0.5rem;
+}
+
+.section-content {
+  margin-bottom: 2.5rem;
+}
+
+.card {
+  transition: transform 0.3s, box-shadow 0.3s;
+  margin-bottom: 1.5rem;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.card-header {
+  background-color: #f8f9fa;
+  font-weight: 600;
+}
+
+.policy-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.policy-list li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #f8f9fa;
+}
+
+.policy-list li:last-child {
+  border-bottom: none;
+}
+
+.policy-list li::before {
+  content: "•";
+  color: #007bff;
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+
+.location-card {
+  height: 100%;
+}
+
+.location-info {
+  margin-bottom: 1rem;
+}
+
+.location-info i {
+  color: #007bff;
+  width: 1.5rem;
+  text-align: center;
+  margin-right: 0.5rem;
+}
+
+.map-container {
+  height: 300px;
+  margin-top: 1.5rem;
+  border-radius: 0.25rem;
+  overflow: hidden;
+  border: 1px solid #dee2e6;
+}
+
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+.error-message {
+  padding: 1rem;
+  background-color: #f8d7da;
+  color: #721c24;
+  border-radius: 0.25rem;
+  margin-bottom: 1rem;
+}
