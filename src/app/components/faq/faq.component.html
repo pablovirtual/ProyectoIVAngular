@@ -1,0 +1,68 @@
+<div class="container">
+  <h2 class="text-center mb-4">Frequently Asked Questions</h2>
+
+  <div *ngIf="loading" class="text-center my-5">
+    <div class="spinner-border text-primary" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+    <p class="mt-2">Loading FAQs...</p>
+  </div>
+
+  <div *ngIf="error" class="alert alert-danger" role="alert">
+    {{ error }}
+  </div>
+
+  <div *ngIf="!loading && !error">
+    <div *ngIf="faqs.length === 0" class="text-center">
+      <p>No FAQs available at the moment. Please check back later.</p>
+    </div>
+
+    <div *ngIf="faqs.length > 0" class="accordion" id="faqAccordion">
+      <div class="card mb-3" *ngFor="let faq of faqs; let i = index">
+        <div class="card-header" id="heading{{i}}">
+          <h2 class="mb-0">
+            <button class="btn btn-link btn-block text-left" type="button" (click)="toggleCollapse(faq)"
+              [attr.aria-expanded]="!faq.collapsed" [attr.aria-controls]="'collapse' + i">
+              {{ faq.question }}
+              <i class="fas" [ngClass]="faq.collapsed ? 'fa-chevron-down' : 'fa-chevron-up'"></i>
+            </button>
+          </h2>
+        </div>
+
+        <div id="collapse{{i}}" class="collapse" [ngClass]="{'show': !faq.collapsed}" [attr.aria-labelledby]="'heading' + i" data-parent="#faqAccordion">
+          <div class="card-body">
+            {{ faq.answer }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Placeholder FAQs if no data is available from API yet -->
+  <div *ngIf="!loading && !error && faqs.length === 0" class="accordion" id="placeholderAccordion">
+    <div class="card mb-3" *ngFor="let i of [1, 2, 3, 4, 5]">
+      <div class="card-header" id="placeholderHeading{{i}}">
+        <h2 class="mb-0">
+          <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" [attr.data-target]="'#placeholderCollapse' + i"
+            aria-expanded="false" [attr.aria-controls]="'placeholderCollapse' + i">
+            Sample Question {{ i }}
+            <i class="fas fa-chevron-down"></i>
+          </button>
+        </h2>
+      </div>
+
+      <div id="placeholderCollapse{{i}}" class="collapse" [attr.aria-labelledby]="'placeholderHeading' + i" data-parent="#placeholderAccordion">
+        <div class="card-body">
+          This is a placeholder answer that will be replaced with real content from the Laravel API when it's connected.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center mt-4 mb-5">
+    <p>Can't find what you're looking for?</p>
+    <a href="mailto:support@example.com" class="btn btn-primary">
+      <i class="fas fa-envelope mr-2"></i>Contact Support
+    </a>
+  </div>
+</div>

@@ -1,0 +1,73 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow-lg mt-5">
+        <div class="card-header bg-primary text-white text-center">
+          <h4>Login</h4>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <!-- Alert for errors -->
+            <div *ngIf="error" class="alert alert-danger">
+              {{ error }}
+            </div>
+
+            <!-- Email field -->
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                formControlName="email"
+                class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+                placeholder="Enter your email"
+              />
+              <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                <div *ngIf="f.email.errors.required">Email is required</div>
+                <div *ngIf="f.email.errors.email">Please enter a valid email address</div>
+              </div>
+            </div>
+
+            <!-- Password field -->
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input
+                type="password"
+                formControlName="password"
+                class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+                placeholder="Enter your password"
+              />
+              <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                <div *ngIf="f.password.errors.required">Password is required</div>
+                <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+              </div>
+            </div>
+
+            <!-- Remember me checkbox -->
+            <div class="form-group form-check">
+              <input
+                type="checkbox"
+                formControlName="rememberMe"
+                class="form-check-input"
+                id="rememberMe"
+              />
+              <label class="form-check-label" for="rememberMe">Remember me</label>
+            </div>
+
+            <!-- Submit button -->
+            <div class="form-group">
+              <button [disabled]="loading" class="btn btn-primary btn-block">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                Login
+              </button>
+            </div>
+          </form>
+        </div>
+        <div class="card-footer text-center">
+          <p class="mb-0">Don't have an account? <a href="#" class="text-primary">Register</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

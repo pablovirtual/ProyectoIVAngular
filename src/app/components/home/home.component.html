@@ -1,0 +1,58 @@
+<div class="jumbotron jumbotron-fluid bg-primary text-white">
+  <div class="container text-center">
+    <h1 class="display-4">Welcome to Our Application</h1>
+    <p class="lead">A powerful Angular application connected to a Laravel backend</p>
+    <hr class="my-4">
+    <p>Explore our features and discover what we have to offer</p>
+    <a routerLink="/faq" class="btn btn-light btn-lg mr-2">
+      <i class="fas fa-question-circle"></i> FAQ
+    </a>
+    <a routerLink="/login" class="btn btn-outline-light btn-lg">
+      <i class="fas fa-sign-in-alt"></i> Login
+    </a>
+  </div>
+</div>
+
+<div class="container">
+  <div *ngIf="loading" class="text-center my-5">
+    <div class="spinner-border text-primary" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+    <p class="mt-2">Loading content...</p>
+  </div>
+
+  <div *ngIf="error" class="alert alert-danger" role="alert">
+    {{ error }}
+  </div>
+
+  <div *ngIf="!loading && !error">
+    <!-- Dynamically loaded content will appear here when API is connected -->
+    <div class="row">
+      <div class="col-md-4 mb-4" *ngFor="let i of [1, 2, 3]">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">Feature {{ i }}</h5>
+            <p class="card-text">This is a placeholder for content that will be loaded from the Laravel API.</p>
+          </div>
+          <div class="card-footer bg-transparent border-top-0">
+            <a href="#" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-5">
+      <div class="col-md-12">
+        <div class="card mb-4">
+          <div class="card-header bg-primary text-white">
+            <h3 class="mb-0">About Our Application</h3>
+          </div>
+          <div class="card-body">
+            <p>This application is built with Angular and uses a Laravel backend API. The application features a responsive design using Bootswatch LUX theme.</p>
+            <p>When the Laravel API is connected, this section will display dynamic content from the backend.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

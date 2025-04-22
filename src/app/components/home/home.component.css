@@ -1,0 +1,26 @@
+.jumbotron {
+  padding: 4rem 2rem;
+  margin-bottom: 2rem;
+  border-radius: 0;
+}
+
+.card {
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card-title {
+  font-weight: 600;
+}
+
+.btn {
+  border-radius: 2px;
+}
+
+.spinner-border {
+  width: 3rem;
+  height: 3rem;
+}

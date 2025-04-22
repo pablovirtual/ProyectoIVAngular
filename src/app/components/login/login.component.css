@@ -1,0 +1,30 @@
+.card {
+  border: none;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.card-header {
+  padding: 1.25rem;
+}
+
+.form-control {
+  height: calc(1.5em + 1rem + 2px);
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+}
+
+.form-control:focus {
+  box-shadow: 0 0 0 0.2rem rgba(66, 139, 202, 0.25);
+}
+
+.btn-primary {
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+}
+
+.card-footer {
+  background-color: transparent;
+  border-top: 1px solid rgba(0, 0, 0, 0.125);
+  padding: 1rem;
+}
