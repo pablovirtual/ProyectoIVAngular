@@ -14,7 +14,45 @@
   font-weight: bold;
 }
 
+.content {
+  padding-top: 70px;
+  padding-bottom: 50px;
+  min-height: calc(100vh - 120px);
+}
+
 .footer {
   padding: 20px 0;
   margin-top: auto;
+}
+
+/* Estilos para el indicador de carga */
+.loading-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  background-color: #007bff;
+  width: 100%;
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+  animation: loading-bar-animation 2.5s infinite ease-in-out;
+}
+
+.loading-bar.hidden {
+  opacity: 0;
+}
+
+@keyframes loading-bar-animation {
+  0% {
+    width: 0%;
+  }
+  50% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+    right: 0;
+    left: unset;
+  }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { AuthService } from './services/auth.service';
+import { LoadingService } from './services/loading.service';
 
 @Component({
   selector: 'app-root',
@@ -12,10 +13,12 @@ export class AppComponent implements OnInit {
   title = 'Angular Laravel App';
   currentYear: number = new Date().getFullYear();
   isLoggedIn: boolean = false;
+  loading: boolean = false;
 
   constructor(
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private loadingService: LoadingService
   ) { }
 
   ngOnInit(): void {
@@ -25,6 +28,11 @@ export class AppComponent implements OnInit {
     // Subscribe to authentication changes
     this.authService.authStatus.subscribe(status => {
       this.isLoggedIn = status;
+    });
+
+    // Subscribe to loading service changes
+    this.loadingService.loading$.subscribe(isLoading => {
+      this.loading = isLoading;
     });
 
     // Subscribe to router events to handle page changes
