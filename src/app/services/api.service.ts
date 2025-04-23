@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import { Faq } from '../models/faq.model';
 
@@ -18,6 +18,7 @@ export class ApiService {
    */
   getHomeContent(): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/home`).pipe(
+      map(response => response.data || response),
       catchError(this.handleError<any>('getHomeContent', {}))
     );
   }
@@ -26,16 +27,18 @@ export class ApiService {
    * Get list of FAQs from the API
    */
   getFaqs(): Observable<Faq[]> {
-    return this.http.get<Faq[]>(`${this.apiUrl}/faqs`).pipe(
+    return this.http.get<any>(`${this.apiUrl}/faqs`).pipe(
+      map(response => response.data || response),
       catchError(this.handleError<Faq[]>('getFaqs', []))
     );
   }
-  
+
   /**
    * Get Quienes Somos content from the API
    */
   getQuienesSomosContent(): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/quienes-somos`).pipe(
+      map(response => response.data || response),
       catchError(this.handleError<any>('getQuienesSomosContent', {}))
     );
   }
@@ -48,9 +51,8 @@ export class ApiService {
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(`${operation} failed: ${error.message}`);
-      console.error('API Error:', error);
       
-      // Let the app keep running by returning an empty result
+      // Let the app keep running by returning an empty result.
       return of(result as T);
     };
   }
