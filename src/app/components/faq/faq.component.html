@@ -1,68 +1,76 @@
 <div class="container">
-  <h2 class="text-center mb-4">Frequently Asked Questions</h2>
+  <div class="row mb-4">
+    <div class="col-md-12">
+      <h1 class="text-center mb-2">Preguntas Frecuentes</h1>
+      <p class="text-center text-muted">Encuentra respuestas a las preguntas más comunes sobre nuestros servicios</p>
+    </div>
+  </div>
 
+  <!-- Estado de carga -->
   <div *ngIf="loading" class="text-center my-5">
     <div class="spinner-border text-primary" role="status">
-      <span class="sr-only">Loading...</span>
+      <span class="visually-hidden">Cargando...</span>
     </div>
-    <p class="mt-2">Loading FAQs...</p>
+    <p class="mt-2">Cargando preguntas frecuentes...</p>
   </div>
 
+  <!-- Mensaje de error -->
   <div *ngIf="error" class="alert alert-danger" role="alert">
-    {{ error }}
+    <i class="fas fa-exclamation-circle me-2"></i> {{ error }}
   </div>
 
+  <!-- Lista de FAQs -->
   <div *ngIf="!loading && !error">
-    <div *ngIf="faqs.length === 0" class="text-center">
-      <p>No FAQs available at the moment. Please check back later.</p>
+    <div *ngIf="faqs.length === 0" class="text-center my-5">
+      <i class="fas fa-question-circle fa-3x text-muted mb-3"></i>
+      <p>No hay preguntas frecuentes disponibles en este momento. Por favor, regrese más tarde.</p>
     </div>
 
-    <div *ngIf="faqs.length > 0" class="accordion" id="faqAccordion">
-      <div class="card mb-3" *ngFor="let faq of faqs; let i = index">
-        <div class="card-header" id="heading{{i}}">
-          <h2 class="mb-0">
-            <button class="btn btn-link btn-block text-left" type="button" (click)="toggleCollapse(faq)"
-              [attr.aria-expanded]="!faq.collapsed" [attr.aria-controls]="'collapse' + i">
-              {{ faq.question }}
-              <i class="fas" [ngClass]="faq.collapsed ? 'fa-chevron-down' : 'fa-chevron-up'"></i>
-            </button>
-          </h2>
-        </div>
-
-        <div id="collapse{{i}}" class="collapse" [ngClass]="{'show': !faq.collapsed}" [attr.aria-labelledby]="'heading' + i" data-parent="#faqAccordion">
-          <div class="card-body">
-            {{ faq.answer }}
+    <div *ngIf="faqs.length > 0" class="accordion accordion-flush" id="faqAccordion">
+      <div class="accordion-item mb-3 border rounded shadow-sm" *ngFor="let faq of faqs; let i = index">
+        <h2 class="accordion-header" id="heading{{i}}">
+          <button class="accordion-button" type="button" (click)="toggleCollapse(faq)"
+            [class.collapsed]="faq.collapsed"
+            [attr.aria-expanded]="!faq.collapsed" 
+            [attr.aria-controls]="'collapse' + i">
+            <span class="faq-question">{{ faq.question }}</span>
+          </button>
+        </h2>
+        <div id="collapse{{i}}" class="accordion-collapse collapse" [ngClass]="{'show': !faq.collapsed}" 
+          [attr.aria-labelledby]="'heading' + i" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            <p class="faq-answer">{{ faq.answer }}</p>
+            
+            <!-- Mostrar metadata si existe -->
+            <div *ngIf="faq.created_at || faq.updated_at" class="faq-metadata text-muted small mt-3">
+              <div *ngIf="faq.created_at">
+                <i class="fas fa-calendar-plus me-1"></i> Creado: {{ faq.created_at | date:'dd/MM/yyyy' }}
+              </div>
+              <div *ngIf="faq.updated_at">
+                <i class="fas fa-sync-alt me-1"></i> Actualizado: {{ faq.updated_at | date:'dd/MM/yyyy' }}
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Placeholder FAQs if no data is available from API yet -->
-  <div *ngIf="!loading && !error && faqs.length === 0" class="accordion" id="placeholderAccordion">
-    <div class="card mb-3" *ngFor="let i of [1, 2, 3, 4, 5]">
-      <div class="card-header" id="placeholderHeading{{i}}">
-        <h2 class="mb-0">
-          <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" [attr.data-target]="'#placeholderCollapse' + i"
-            aria-expanded="false" [attr.aria-controls]="'placeholderCollapse' + i">
-            Sample Question {{ i }}
-            <i class="fas fa-chevron-down"></i>
-          </button>
-        </h2>
-      </div>
-
-      <div id="placeholderCollapse{{i}}" class="collapse" [attr.aria-labelledby]="'placeholderHeading' + i" data-parent="#placeholderAccordion">
-        <div class="card-body">
-          This is a placeholder answer that will be replaced with real content from the Laravel API when it's connected.
+  <!-- Sección de contacto -->
+  <div class="row mt-5 mb-4">
+    <div class="col-md-8 offset-md-2">
+      <div class="card bg-light text-center p-4">
+        <h4>¿No encontraste lo que buscabas?</h4>
+        <p class="mb-3">Nuestro equipo de soporte está listo para ayudarte con cualquier pregunta adicional.</p>
+        <div>
+          <a href="mailto:soporte@empresa.com" class="btn btn-primary me-2">
+            <i class="fas fa-envelope me-2"></i>Contactar Soporte
+          </a>
+          <a href="tel:+5215512345678" class="btn btn-outline-secondary">
+            <i class="fas fa-phone me-2"></i>Llamar
+          </a>
         </div>
       </div>
     </div>
-  </div>
-
-  <div class="text-center mt-4 mb-5">
-    <p>Can't find what you're looking for?</p>
-    <a href="mailto:support@example.com" class="btn btn-primary">
-      <i class="fas fa-envelope mr-2"></i>Contact Support
-    </a>
   </div>
 </div>

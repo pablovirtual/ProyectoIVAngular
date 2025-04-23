@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PreguntasService } from '../../services/preguntas.service';
 import { ApiService } from '../../services/api.service';
 import { Faq } from '../../models/faq.model';
 
@@ -12,7 +13,10 @@ export class FaqComponent implements OnInit {
   loading: boolean = true;
   error: string = '';
 
-  constructor(private apiService: ApiService) { }
+  constructor(
+    private preguntasService: PreguntasService,
+    private apiService: ApiService
+  ) { }
 
   ngOnInit(): void {
     this.loadFaqs();
@@ -20,23 +24,46 @@ export class FaqComponent implements OnInit {
 
   loadFaqs(): void {
     this.loading = true;
+    
+    // Intentamos primero con el nuevo servicio de preguntas
+    this.preguntasService.getPreguntas().subscribe(
+      (data) => {
+        if (data && data.length > 0) {
+          console.log('Preguntas cargadas desde PreguntasService:', data);
+          this.faqs = data; // Ya vienen con la propiedad collapsed
+          this.loading = false;
+        } else {
+          // Si no hay datos, intentamos con el servicio anterior
+          this.tryFallbackService();
+        }
+      },
+      (error) => {
+        console.warn('Error al cargar desde PreguntasService, intentando con ApiService:', error);
+        this.tryFallbackService();
+      }
+    );
+  }
+  
+  private tryFallbackService(): void {
+    // Fallback al servicio API anterior
     this.apiService.getFaqs().subscribe(
       (data) => {
         if (data && data.length > 0) {
+          console.log('Preguntas cargadas desde ApiService:', data);
           // Añadir la propiedad collapsed para manejo del UI
           this.faqs = data.map(faq => ({
             ...faq,
             collapsed: true
           }));
         } else {
-          console.warn('API returned empty data, using default FAQs');
+          console.warn('Ambos servicios retornaron datos vacíos, usando FAQs por defecto');
           this.setDefaultFaqs();
         }
         this.loading = false;
       },
       (error) => {
         this.error = 'Error al cargar las preguntas frecuentes. Por favor, intente más tarde.';
-        console.error('Error loading FAQs:', error);
+        console.error('Error cargando desde ambos servicios:', error);
         
         // En caso de error, usar FAQs por defecto
         this.setDefaultFaqs();

@@ -1,50 +1,94 @@
-.accordion .card {
+/* Estilos para el acordeón */
+.accordion-item {
+  transition: all 0.3s ease;
   border: 1px solid rgba(0, 0, 0, 0.125);
-  border-radius: 4px;
-  margin-bottom: 10px;
+  overflow: hidden;
 }
 
-.accordion .card-header {
-  padding: 0;
-  background-color: #f8f9fa;
+.accordion-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.accordion .btn-link {
-  color: #343a40;
-  text-decoration: none;
-  font-weight: 500;
-  padding: 1rem 1.25rem;
-  position: relative;
-  text-align: left;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.accordion-button:not(.collapsed) {
+  background-color: rgba(13, 110, 253, 0.1);
+  color: #0d6efd;
+  font-weight: 600;
 }
 
-.accordion .btn-link:hover {
-  color: #007bff;
-  text-decoration: none;
+.accordion-button:focus {
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  z-index: 3;
 }
 
-.accordion .btn-link:focus {
-  text-decoration: none;
-  box-shadow: none;
-}
-
-.accordion .card-body {
-  padding: 1.25rem;
-  background-color: #fff;
-}
-
-.spinner-border {
-  width: 3rem;
-  height: 3rem;
-}
-
-.fas {
+.accordion-button::after {
   transition: transform 0.3s ease;
 }
 
-.fa-chevron-up {
-  transform: rotate(180deg);
+/* Estilos para el contenido */
+.faq-question {
+  font-weight: 500;
+  color: #333;
+}
+
+.faq-answer {
+  line-height: 1.6;
+  color: #555;
+  font-size: 1.05rem;
+}
+
+/* Metadatos */
+.faq-metadata {
+  border-top: 1px solid #eee;
+  padding-top: 10px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: #777;
+}
+
+/* Estado de carga */
+.spinner-border {
+  width: 3rem;
+  height: 3rem;
+  color: #0d6efd;
+}
+
+/* Iconos */
+.fas {
+  transition: all 0.3s ease;
+}
+
+/* Botones */
+.btn-primary {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  padding: 0.5rem 1.5rem;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.btn-outline-secondary {
+  transition: all 0.3s ease;
+}
+
+.btn-outline-secondary:hover {
+  background-color: #6c757d;
+  color: white;
+}
+
+/* Tarjeta de contacto */
+.card.bg-light {
+  border: none;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.card.bg-light:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
