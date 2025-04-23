@@ -4,5 +4,10 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8000/api' // URL of Laravel API (to be updated later)
+  apiUrl: 'http://localhost:8000/api', // URL de la API Laravel (se actualizará con la URL real)
+  apiTimeout: 10000, // Timeout para peticiones API en milisegundos
+  apiRetryAttempts: 2, // Intentos de reconexión a la API
+  authTokenName: 'auth_token', // Nombre del token JWT en localStorage/sessionStorage
+  defaultLanguage: 'es',
+  cacheDuration: 60000 // Duración de caché en milisegundos (1 minuto)
 };

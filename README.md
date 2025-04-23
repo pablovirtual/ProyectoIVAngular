@@ -25,8 +25,23 @@ La aplicación está organizada en componentes claramente definidos:
 
 ### Servicios
 
-1. **ApiService**: Gestiona todas las comunicaciones con la API REST de Laravel.
-2. **AuthService**: Maneja la autenticación de usuarios y el estado de la sesión.
+1. **ApiService**: Gestiona las comunicaciones generales con la API REST de Laravel, incluyendo:
+   - Obtención de contenido de la página principal
+   - Obtención de preguntas frecuentes
+   - Obtención de información de "Quiénes Somos"
+
+2. **AuthService**: Maneja la autenticación de usuarios y el estado de la sesión:
+   - Login y logout de usuarios
+   - Almacenamiento seguro de tokens JWT
+   - Verificación del estado de autenticación
+   - Gestión de permisos
+
+3. **FaqsService**: Servicio especializado para operaciones CRUD con preguntas frecuentes:
+   - Listar todas las preguntas
+   - Obtener una pregunta específica
+   - Crear nuevas preguntas
+   - Actualizar preguntas existentes
+   - Eliminar preguntas
 
 ### Modelos de Datos
 
@@ -84,12 +99,31 @@ La aplicación sigue una arquitectura cliente-servidor:
 
 ### Configuración de la API
 
-Para conectar la aplicación con el backend de Laravel, es necesario configurar la URL de la API en el archivo `src/environments/environment.ts`:
+Para conectar la aplicación con el backend de Laravel, es necesario configurar los parámetros de la API en el archivo `src/environments/environment.ts`:
 
 ```typescript
 export const environment = {
   production: false,
-  apiUrl: 'http://tu-api-laravel.com/api'
+  apiUrl: 'http://tu-api-laravel.com/api',
+  apiTimeout: 10000, // Timeout para peticiones API en milisegundos
+  apiRetryAttempts: 2, // Intentos de reconexión a la API
+  authTokenName: 'auth_token', // Nombre del token JWT en localStorage/sessionStorage
+  defaultLanguage: 'es',
+  cacheDuration: 60000 // Duración de caché en milisegundos
+};
+```
+
+Y para el entorno de producción en `src/environments/environment.prod.ts`:
+
+```typescript
+export const environment = {
+  production: true,
+  apiUrl: 'https://api-laravel.midominio.com/api', // URL de producción
+  apiTimeout: 15000,
+  apiRetryAttempts: 3,
+  authTokenName: 'auth_token',
+  defaultLanguage: 'es',
+  cacheDuration: 300000 // 5 minutos en producción
 };
 ```
 
@@ -134,16 +168,25 @@ Formulario de inicio de sesión con:
 
 ## Estado Actual
 
-La aplicación actualmente está en fase de desarrollo:
-- La estructura de componentes está implementada
-- Las vistas estáticas están completas
-- Pendiente de integración con la API Laravel real
+La aplicación se encuentra en un estado avanzado de desarrollo:
+- La estructura de componentes está completamente implementada
+- El diseño responsivo está optimizado con Bootswatch LUX
+- Las vistas estáticas están completas y funcionando
+- Servicios para comunicación con API implementados
+- Sistema de autenticación basado en JWT implementado
+- Manejo de errores y estados de carga implementados
+- Navegación entre componentes funciona correctamente
 
 ## Próximos Pasos
 
-1. Implementar la comunicación real con la API Laravel
-2. Añadir funcionalidad completa de autenticación
-3. Desarrollar módulos adicionales según necesidades del negocio
+1. Conectar la aplicación a una API Laravel real (actualmente trabaja con datos locales)
+2. Implementar funcionalidades adicionales:
+   - Panel de administración
+   - Gestión de usuarios
+   - Sistema de notificaciones
+3. Agregar tests unitarios y end-to-end
+4. Optimizar para producción (lazy loading, minificación, etc.)
+5. Implementar PWA (Progressive Web App) para funcionamiento offline
 
 ## Contacto
 

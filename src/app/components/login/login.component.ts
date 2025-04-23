@@ -39,8 +39,16 @@ export class LoginComponent implements OnInit {
   onSubmit(): void {
     this.submitted = true;
 
-    // Stop here if form is invalid
+    // Detenerse si el formulario no es válido
     if (this.loginForm.invalid) {
+      // Resaltar los errores en los campos del formulario
+      Object.keys(this.loginForm.controls).forEach(key => {
+        const control = this.loginForm.get(key);
+        if (control?.invalid) {
+          control.markAsDirty();
+          control.markAsTouched();
+        }
+      });
       return;
     }
 
@@ -50,11 +58,24 @@ export class LoginComponent implements OnInit {
     const { email, password, rememberMe } = this.loginForm.value;
 
     this.authService.login(email, password, rememberMe).subscribe(
-      () => {
+      (user) => {
+        console.log('Login exitoso:', user);
+        // Redirigir al usuario a la página principal después del login
         this.router.navigate(['/']);
       },
-      error => {
-        this.error = error.error?.message || 'Login failed. Please check your credentials and try again.';
+      (error) => {
+        // Manejar diferentes tipos de errores de autenticación
+        if (error.status === 401) {
+          this.error = 'Credenciales inválidas. Por favor, verifique su correo y contraseña.';
+        } else if (error.status === 429) {
+          this.error = 'Demasiados intentos fallidos. Por favor, inténtelo nuevamente más tarde.';
+        } else if (error.error?.message) {
+          this.error = error.error.message;
+        } else {
+          this.error = 'Error al iniciar sesión. Por favor, inténtelo de nuevo más tarde.';
+        }
+        
+        console.error('Error de inicio de sesión:', error);
         this.loading = false;
       }
     );
